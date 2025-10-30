@@ -96,23 +96,24 @@ def duplicate_pdf(emp_data):
     c.setFont("Helvetica-Bold", 11)
     c.drawCentredString(width/2, height-527, "INCOME TAX COMPUTATION")
 
-    image_path = os.path.join(BASE_DIR, "..", "images", "logo1.jpg")
-    img = Image.open(image_path)
+    from PIL import Image
+    BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+    logo_1 = os.path.join(BASE_DIR, "..", "images", "logo1.jpg")
     c.drawImage(
-        img,               
+        logo_1,               
         x=-120, y=height - 65,      
         width=500, height=45,      
         preserveAspectRatio=True, 
         mask='auto'               
     )
-
-    # c.drawImage(
-    #     "duplicate.png",               
-    #     x=240, y=height - 180,      
-    #     width=520, height=80,      
-    #     preserveAspectRatio=True, 
-    #     mask='auto'               
-    # )
+    logo_2 = os.path.join(BASE_DIR, "..", "images", "duplicate.png")
+    c.drawImage(
+        logo_2,               
+        x=240, y=height - 180,      
+        width=520, height=80,      
+        preserveAspectRatio=True, 
+        mask='auto'               
+    )
 
     # Customer & Bill Details
     c.setFont("Helvetica-Bold", 10)

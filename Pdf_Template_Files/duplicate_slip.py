@@ -95,21 +95,21 @@ def duplicate_pdf(emp_data):
     c.setFont("Helvetica-Bold", 11)
     c.drawCentredString(width/2, height-527, "INCOME TAX COMPUTATION")
 
-    c.drawImage(
-        "logo1.jpg",               
-        x=-120, y=height - 65,      
-        width=500, height=45,      
-        preserveAspectRatio=True, 
-        mask='auto'               
-    )
+    # c.drawImage(
+    #     "logo1.jpg",               
+    #     x=-120, y=height - 65,      
+    #     width=500, height=45,      
+    #     preserveAspectRatio=True, 
+    #     mask='auto'               
+    # )
 
-    c.drawImage(
-        "duplicate.png",               
-        x=240, y=height - 180,      
-        width=520, height=80,      
-        preserveAspectRatio=True, 
-        mask='auto'               
-    )
+    # c.drawImage(
+    #     "duplicate.png",               
+    #     x=240, y=height - 180,      
+    #     width=520, height=80,      
+    #     preserveAspectRatio=True, 
+    #     mask='auto'               
+    # )
 
     # Customer & Bill Details
     c.setFont("Helvetica-Bold", 10)

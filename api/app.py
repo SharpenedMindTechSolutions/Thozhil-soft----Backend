@@ -22,11 +22,11 @@ from quotation import quotation
 date=datetime.now().strftime("%d-%m-%Y")
 time=datetime.now().strftime("%H-%M-%S")
 load_dotenv()
-apps = Flask(__name__)
-CORS(apps)
+app = Flask(__name__)
+CORS(app)
 
 # Access environment variables
-apps.config['SECRET_KEY'] = os.getenv('SECRET_KEY')
+app.config['SECRET_KEY'] = os.getenv('SECRET_KEY')
 mongo_url = os.getenv('MONGO_URI')
 
 
@@ -38,7 +38,7 @@ new_intern_storage =db["InternshipStudents"]
 mku_mini_intern =db["MkuMiniIntern"]
 quotation_record =db["quotation"]
 
-@apps.route('/register',methods=['POST'])
+@app.route('/register',methods=['POST'])
 def register():
     if request.method == 'POST':
         data = request.json
@@ -96,7 +96,7 @@ def register():
                 return jsonify({"message":"Employee ID Exsist"}) , 400
         return jsonify({"message":"Data's are stored"})
 
-@apps.route('/emp',methods=['POST'])
+@app.route('/emp',methods=['POST'])
 def emp():
     emp_id = request.json.get("Employee_id")  # get from JSON body
     if not emp_id:
@@ -109,12 +109,12 @@ def emp():
     else:
         return jsonify({"error": "Employee not found"}), 404 
     
-@apps.route("/employees", methods=["GET"])
+@app.route("/employees", methods=["GET"])
 def get_employees():
     users = list(store_data.find({}, {"_id": 0}))  # Exclude _id
     return jsonify(users)
 
-@apps.route("/update_user", methods=["POST"])
+@app.route("/update_user", methods=["POST"])
 def update_user():
     data = request.json
     emp_id = data.get("Employee_id")
@@ -133,7 +133,7 @@ def update_user():
     else:
         return jsonify({"error": "No changes made"}), 400
 
-@apps.route('/store', methods=['POST'])
+@app.route('/store', methods=['POST'])
 def generate_slip():
     data = request.get_json()  
     if not data:
@@ -200,7 +200,7 @@ def generate_slip():
         mimetype="application/pdf"
     )
     
-@apps.route('/download_payslip', methods=['POST'])
+@app.route('/download_payslip', methods=['POST'])
 def download_payslip():
     data = request.json
     emp_id = data.get("Employee_id")
@@ -233,7 +233,7 @@ def download_payslip():
         mimetype="application/pdf"
     )
 
-@apps.route('/delete_user', methods=['DELETE'])
+@app.route('/delete_user', methods=['DELETE'])
 def delete_user():
     data = request.get_json()
     employee_id = data.get("Employee_id")
@@ -248,12 +248,12 @@ def delete_user():
     else:
         return jsonify({"error": f"User {employee_id} not found"}), 404
 
-@apps.route("/fetch/interns", methods=["GET"])
+@app.route("/fetch/interns", methods=["GET"])
 def get_interns():
     intern = list(new_intern_storage.find({}, {"_id": 0}))
     return jsonify(intern), 200
 
-@apps.route("/newinterns", methods=["POST"])
+@app.route("/newinterns", methods=["POST"])
 def smd_new_intern():
     data = request.get_json()
     if not data:
@@ -284,7 +284,7 @@ def smd_new_intern():
         new_intern_storage.insert_one(data)
         return jsonify({"success": f"Intern ID : {intern_id} registered"}), 200
 
-@apps.route("/mkuintern", methods=["POST"])
+@app.route("/mkuintern", methods=["POST"])
 def mini_intern():
     data = request.get_json()
     if not data:
@@ -330,7 +330,7 @@ def mini_intern():
         mimetype="application/pdf",
     )
 
-@apps.route('/experience_letter',methods=['POST'])
+@app.route('/experience_letter',methods=['POST'])
 def experience_letter_api():
     emp_id = request.json.get("Employee_id")  # get from JSON body
     if not emp_id:
@@ -346,7 +346,7 @@ def experience_letter_api():
     else:
         return jsonify({"error": "Employee not found"}), 404 
 
-@apps.route('/experience_letter_download', methods=['POST'])
+@app.route('/experience_letter_download', methods=['POST'])
 def experience_letter_download():
     data = request.get_json()
     name = data.get('Employee_name')
@@ -362,7 +362,7 @@ def experience_letter_download():
         mimetype="application/pdf"
     )
 
-@apps.route('/smdintern',methods=['POST'])
+@app.route('/smdintern',methods=['POST'])
 def Smd_intern_fetch_api():
     emp_id = request.json.get("intern_id")  
     if not emp_id:
@@ -379,7 +379,7 @@ def Smd_intern_fetch_api():
     else:
         return jsonify({"error": "Intern not found"}), 404 
     
-@apps.route('/smd_intern_certify_download', methods=['POST'])
+@app.route('/smd_intern_certify_download', methods=['POST'])
 def smd_intern_certify_download():
     data = request.get_json()
     name = data.get('intern_name')
@@ -395,7 +395,7 @@ def smd_intern_certify_download():
         mimetype="application/pdf"
     )
 
-@apps.route('/quotation_api', methods=['POST'])
+@app.route('/quotation_api', methods=['POST'])
 def quotation_api():
     data = request.get_json()
     if not data:
@@ -443,12 +443,12 @@ def quotation_api():
         download_name=filename,
         mimetype="application/pdf",
     )
-@apps.route('/welcome')
+@app.route('/welcome')
 def welcome():
     return jsonify({"message": "Welcome to the Flask API!"})
 
 if __name__ == "__main__":
-    apps.run(debug=True, port=5005)
+    app.run(debug=True, port=5005)
 
 
 

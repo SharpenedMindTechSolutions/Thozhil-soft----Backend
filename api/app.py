@@ -447,9 +447,7 @@ def quotation_api():
 def welcome():
     return jsonify({"message": "Welcome to the Flask API!"})
 
-if __name__ == "__main__":
-    app.run(debug=True, port=5005)
-
+app=app
 
 
 

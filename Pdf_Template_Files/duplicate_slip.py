@@ -7,7 +7,8 @@ import pytz
 import calendar
 from reportlab.lib.colors import yellow, black
 import sys, os
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+from PIL import Image
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
 ist = pytz.timezone("Asia/Kolkata")
 current_time = datetime.now(ist)
@@ -95,21 +96,23 @@ def duplicate_pdf(emp_data):
     c.setFont("Helvetica-Bold", 11)
     c.drawCentredString(width/2, height-527, "INCOME TAX COMPUTATION")
 
+    image_path = os.path.join(BASE_DIR, "..", "images", "logo1.jpg")
+    img = Image.open(image_path)
     c.drawImage(
-        "logo1.jpg",               
+        img,               
         x=-120, y=height - 65,      
         width=500, height=45,      
         preserveAspectRatio=True, 
         mask='auto'               
     )
 
-    c.drawImage(
-        "duplicate.png",               
-        x=240, y=height - 180,      
-        width=520, height=80,      
-        preserveAspectRatio=True, 
-        mask='auto'               
-    )
+    # c.drawImage(
+    #     "duplicate.png",               
+    #     x=240, y=height - 180,      
+    #     width=520, height=80,      
+    #     preserveAspectRatio=True, 
+    #     mask='auto'               
+    # )
 
     # Customer & Bill Details
     c.setFont("Helvetica-Bold", 10)

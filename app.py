@@ -445,7 +445,7 @@ def quotation_api():
     )
 apps.route('/',methods=['get'])
 def welcome():
-    return 'Welcome To Thozhil Soft'
+    return jsonify({'message':'Flask Backend Running'})
 
 
 if __name__ == "__main__":

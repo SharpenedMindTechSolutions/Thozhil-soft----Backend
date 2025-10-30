@@ -28,7 +28,7 @@ CORS(apps)
 # Access environment variables
 apps.config['SECRET_KEY'] = os.getenv('SECRET_KEY')
 mongo_url = os.getenv('MONGO_URI')
-print(mongo_url)
+
 
 client = MongoClient(mongo_url)
 db = client["SmdPayslip"]
@@ -443,13 +443,12 @@ def quotation_api():
         download_name=filename,
         mimetype="application/pdf",
     )
-apps.route('/',methods=['get'])
+@apps.route('/welcome')
 def welcome():
-    return jsonify({'message':'Flask Backend Running'})
-
+    return jsonify({"message": "Welcome to the Flask API!"})
 
 if __name__ == "__main__":
-    apps.run(host='0.0.0.0',debug=True, port=5005)
+    apps.run(debug=True, port=5005)
 
 
 

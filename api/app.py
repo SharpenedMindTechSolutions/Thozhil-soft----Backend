@@ -1,23 +1,22 @@
 from flask import Flask, request, jsonify, send_file
 from flask_cors import CORS
 from pymongo import MongoClient
-from payslip import pdf
 from datetime import datetime
 import calendar
 import io
 from io import BytesIO
 from reportlab.lib.pagesizes import A4
 from dotenv import load_dotenv
-import os
 
-from duplicate_slip import duplicate_pdf
-from intern_offer_letter import Intern_Offer_Letter
-from Experience_letter import Experience_Letter
-from smd_intern_certificate import Smd_Intern_Certificate
-from quotation import quotation
+import sys, os
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
-
-
+from Pdf_Template_Files.payslip import pdf
+from Pdf_Template_Files.duplicate_slip import duplicate_pdf
+from Pdf_Template_Files.intern_offer_letter import Intern_Offer_Letter
+from Pdf_Template_Files.Experience_letter import Experience_Letter
+from Pdf_Template_Files.smd_intern_certificate import Smd_Intern_Certificate
+from Pdf_Template_Files.quotation import quotation
 
 date=datetime.now().strftime("%d-%m-%Y")
 time=datetime.now().strftime("%H-%M-%S")
@@ -447,7 +446,9 @@ def quotation_api():
 def welcome():
     return jsonify({"message": "Welcome to the Flask API!"})
 
-app=app
+# if __name__ == "__main__":
+#     app.run(debug=True, port=5005)
 
+app = app
 
 

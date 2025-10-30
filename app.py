@@ -443,6 +443,9 @@ def quotation_api():
         download_name=filename,
         mimetype="application/pdf",
     )
+apps.route('/',methods=['get'])
+def welcome():
+    return 'Welcome To Thozhil Soft'
 
 
 if __name__ == "__main__":

@@ -1,7 +1,7 @@
 from flask import Flask, request, jsonify, send_file
 from flask_cors import CORS
 from pymongo import MongoClient
-from payslip import pdf 
+from payslip import pdf
 from datetime import datetime
 import calendar
 import io

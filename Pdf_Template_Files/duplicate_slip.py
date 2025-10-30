@@ -6,6 +6,8 @@ from io import BytesIO
 import pytz
 import calendar
 from reportlab.lib.colors import yellow, black
+import sys, os
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 ist = pytz.timezone("Asia/Kolkata")
 current_time = datetime.now(ist)

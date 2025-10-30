@@ -98,7 +98,7 @@ def duplicate_pdf(emp_data):
 
     from PIL import Image
     BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-    logo_1 = os.path.join(BASE_DIR, "..", "images", "logo1.jpg")
+    logo_1 = os.path.join(BASE_DIR, ".", "images", "logo1.jpg")
     c.drawImage(
         logo_1,               
         x=-120, y=height - 65,      
@@ -106,7 +106,7 @@ def duplicate_pdf(emp_data):
         preserveAspectRatio=True, 
         mask='auto'               
     )
-    logo_2 = os.path.join(BASE_DIR, "..", "images", "duplicate.png")
+    logo_2 = os.path.join(BASE_DIR, ".", "images", "duplicate.png")
     c.drawImage(
         logo_2,               
         x=240, y=height - 180,      

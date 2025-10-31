@@ -6,6 +6,7 @@ from reportlab.lib.enums import TA_JUSTIFY, TA_CENTER
 from reportlab.lib.colors import black 
 from datetime import datetime
 from io import BytesIO
+import os
 
 def quotation(client_data):
   
@@ -26,8 +27,10 @@ def quotation(client_data):
     x_logo = (width_logo - img_width) / 2
     y_logo = height - 100
 
+    BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+    logo_1 = os.path.join(BASE_DIR,"logo1.jpg")
     c.drawImage(
-        "logo1.jpg",
+        logo_1,
         x=x_logo,
         y=y_logo,
         width=img_width,

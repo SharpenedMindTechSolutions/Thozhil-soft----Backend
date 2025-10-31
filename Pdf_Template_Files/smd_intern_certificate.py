@@ -6,7 +6,7 @@ from reportlab.lib.enums import TA_JUSTIFY, TA_CENTER
 from reportlab.lib.colors import black
 from datetime import datetime
 from io import BytesIO
-
+import os
 
 
 def Smd_Intern_Certificate(smd_intern_data):
@@ -26,8 +26,10 @@ def Smd_Intern_Certificate(smd_intern_data):
     # -------------------------------
     # 1️⃣ Draw Logos
     # -------------------------------
+    BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+    logo_1 = os.path.join(BASE_DIR,"logo1.jpg")
     c.drawImage(
-        "logo1.jpg",
+        logo_1,
         x=(width - 500) / 2,
         y=height - 85,
         width=500,
@@ -41,9 +43,10 @@ def Smd_Intern_Certificate(smd_intern_data):
     x_logo = (220 - img_width) / 2
     y_logo = height - 600
 
-
+    BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+    e_sign = os.path.join(BASE_DIR,"e-sign.png")
     c.drawImage(
-        "e-sign.png",
+        e_sign,
         x=x_logo,
         y=y_logo,
         width=img_width,
@@ -57,9 +60,10 @@ def Smd_Intern_Certificate(smd_intern_data):
     x_logo = (450 - img_width) / 2
     y_logo = height - 630
 
-
+    BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+    smd_seal = os.path.join(BASE_DIR,"smd_seal.png")
     c.drawImage(
-        "smd_seal.png",
+        smd_seal,
         x=x_logo,
         y=y_logo,
         width=img_width,

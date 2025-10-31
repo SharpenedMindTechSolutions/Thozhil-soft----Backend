@@ -6,6 +6,7 @@ from io import BytesIO
 import pytz
 import calendar
 from reportlab.lib.colors import yellow, black
+import os
 
 ist = pytz.timezone("Asia/Kolkata")
 current_time = datetime.now(ist)
@@ -93,8 +94,10 @@ def pdf(emp_data):
     c.setFont("Helvetica-Bold", 11)
     c.drawCentredString(width/2, height-527, "INCOME TAX COMPUTATION")
 
+    BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+    logo_1 = os.path.join(BASE_DIR,"logo1.jpg")
     c.drawImage(
-        "logo1.jpg",               
+        logo_1,               
         x=-120, y=height - 65,      
         width=500, height=45,      
         preserveAspectRatio=True, 

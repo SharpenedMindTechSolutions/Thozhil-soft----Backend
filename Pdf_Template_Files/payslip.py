@@ -83,9 +83,10 @@ def pdf(emp_data):
     x = (width - smd_width) / 2
     c.setFont("Helvetica-Bold", 11)
     c.drawCentredString(x, height-30, "Payslip Issue Date & Time :")
+    ist = pytz.timezone("Asia/Kolkata")
     year = datetime.now().year
     date=datetime.now().strftime("%d-%m-%Y")
-    time = datetime.now().strftime("%I:%M:%S %p")
+    time = datetime.now(ist).strftime("%I:%M:%S %p")
     smd_width = -410
     x = (width - smd_width) / 2
     c.setFont("Helvetica", 11)

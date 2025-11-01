@@ -257,8 +257,8 @@ def duplicate_pdf(emp_data):
     total_gross_earning_sum = np.sum([e_m_salary,e_m_hra,
                                   e_m_holiday,e_m_engagement_pay,
                                   e_m_statutory,e_m_medical])
-    total_gross_earning_sub_with_held = np.subtract(total_gross_earning_sum,std_m_other)
-    total_net_pay = total_gross_earning_sub_with_held
+    # total_gross_earning_sub_with_held = np.subtract(total_gross_earning_sum,std_m_other)
+    total_net_pay = total_gross_earning_sum
 
     # This is for deductions salary field labels
     c.setFont("Helvetica-Bold", 9.5)

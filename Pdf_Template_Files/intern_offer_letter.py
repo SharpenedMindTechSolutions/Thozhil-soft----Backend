@@ -121,8 +121,8 @@ def Intern_Offer_Letter(intern_data):
     course = intern_data['course']
 
     if course == 'Android':
-        paragraph_text2 = f"""
-        The intern designed and deployed a <b>{project}</b> in <b>Andriod Application</b>, effectively showcasing their 
+        paragraph_text2 = f""" 
+        As a <b>Andriod Development Intern</b>, the individual worked on and successfully completed the <b>{project}</b> project, effectively showcasing their 
         technical skills and completed projects. Key skills acquired include front-end development 
         with <b>HTML, CSS, JavaScript,</b> and <b>React Native</b>, along with hands-on experience in version control 
         using <b>Git</b> and <b>GitHub</b>. The intern demonstrated excellent commitment, achieving <b>{total_attendance_percent}%</b> 
@@ -130,21 +130,21 @@ def Intern_Offer_Letter(intern_data):
         """
     elif course == 'Full Stack':
         paragraph_text2 = f"""
-        The intern successfully completed the <b>{project}</b> in <b>Web Development Internship</b>, effectively showcasing 
+        As a <b>Web Development Intern</b>, the individual worked on and successfully completed the <b>{project}</b> project, effectively showcasing 
         their technical skills and completed projects. Key skills acquired include front-end development using <b>HTML, CSS,</b> and 
         <b>JavaScript</b>, along with hands-on experience in version control with <b>Git</b> and <b>GitHub</b>. The intern demonstrated excellent commitment,
           achieving <b>{total_attendance_percent}%</b> attendance and a final test score of <b>{total_mark}%</b>.
         """
     elif course =='Digital Marketing':
         paragraph_text2 = f"""
-        The intern successfully completed the <b>{project}</b> in <b>Digital Marketing Internship</b>, effectively showcasing 
+        As a <b>Digital Marketing Intern</b>, the individual worked on and successfully completed the <b>{project}</b> project, effectively showcasing 
         their technical skills and completed projects. Key skills acquired include <b>SEO, social media marketing, 
         content creation, and digital advertising strategies</b>. The intern demonstrated excellent commitment, achieving 
         <b>{total_attendance_percent}%</b> attendance and a final test score of <b>{total_mark}%</b>.
         """
     elif course == 'Data Science':
         paragraph_text2 = f"""
-        The intern successfully completed the <b>{project}</b> in <b>Data Science Internship</b>, gaining proficiency in 
+        As a <b>Data Science Intern</b>, the individual worked on and successfully completed the <b>{project}</b> project, gaining proficiency in 
         <b>Python</b> and hands-on experience with libraries like <b>NumPy, Pandas, Requests, and BeautifulSoup</b>. 
         They also used <b>Git</b> and <b>GitHub</b> for version control, achieving <b>{total_attendance_percent}%</b> 
         attendance and a final test score of <b>{total_mark}%</b>, demonstrating strong commitment and learning 
@@ -152,7 +152,7 @@ def Intern_Offer_Letter(intern_data):
         """
     elif course == 'Python':
         paragraph_text2 = f"""
-        The intern successfully completed the <b>{project}</b> in <b>Python AI/ML Internship</b>, gaining proficiency 
+        As a <b>Python AI & ML Intern</b>, the individual worked on and successfully completed the <b>{project}</b> project, gaining proficiency 
         in <b>Python</b> and hands-on experience with libraries like <b>NumPy, Pandas, TensorFlow, PyTorch, 
         scikit-learn, and OpenCV</b>. They also used <b>Git</b> and <b>GitHub</b> for version control, achieving 
         <b>{total_attendance_percent}%</b> attendance and a final test score of <b>{total_mark}%</b>, demonstrating 

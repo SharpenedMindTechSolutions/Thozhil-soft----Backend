@@ -294,10 +294,6 @@ def mini_intern():
         "internName",
         "course",
         "project",
-        "attendance",
-        "testMark",
-        "starting",
-        "ending",
     ]
 
     missing = [field for field in required_fields if not data.get(field)]
@@ -312,7 +308,6 @@ def mini_intern():
         return jsonify({"error": f"Intern ID : {intern_id} already exists"}), 400
     else:
         mku_mini_intern.insert_one(data)
-    from io import BytesIO
     # Generate PDF
     pdf_bytes = Intern_Offer_Letter(data)  # Must return bytes
     buffer = BytesIO(pdf_bytes)

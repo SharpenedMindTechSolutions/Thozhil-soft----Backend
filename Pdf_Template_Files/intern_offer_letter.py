@@ -10,6 +10,7 @@ import os
 
 
 
+
 def Intern_Offer_Letter(intern_data):
   
     # Create PDF in memory
@@ -17,13 +18,14 @@ def Intern_Offer_Letter(intern_data):
     c = canvas.Canvas(buffer, pagesize=A4)
     width, height = A4
     date = datetime.now().strftime("%d-%m-%Y")
-    c.drawString(500, height-120,f"{date}")
+    c.drawString(500, height-120,f"10-10-2025")
+    c.drawString(404, height-85,f"Cert.No : SMD-SI-MKU020-{intern_data['internId']}" )
    
     # Draw Centered Logo
   
     img_width = 500
     img_height = 55
-    x_logo = (width - img_width) / 2
+    x_logo = (250 - img_width) / 2
     y_logo = height - 85
 
     BASE_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -57,8 +59,8 @@ def Intern_Offer_Letter(intern_data):
 
     img_width = 550
     img_height = 80
-    x_logo = (450 - img_width) / 2
-    y_logo = height - 630
+    x_logo = (250 - img_width) / 2
+    y_logo = height - 605
 
     
     BASE_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -107,16 +109,16 @@ def Intern_Offer_Letter(intern_data):
     # Letter Content
 
     name = intern_data['internName']
-    starting_date = intern_data['starting']
-    starting_date = datetime.strptime(starting_date, "%Y-%m-%d").strftime("%d-%m-%Y")
-    ending_date = intern_data['ending']
-    ending_date = datetime.strptime(ending_date, "%Y-%m-%d").strftime("%d-%m-%Y")
-    attendance = int(intern_data['attendance'])
-    total_attendance_percent = (attendance/15)*100
-    total_attendance_percent =f"{total_attendance_percent:.2f}"
-    mark = int(intern_data['testMark'])
-    total_mark = (mark/50)*100
-    total_mark =f"{total_mark:.2f}"
+    # starting_date = intern_data['starting']
+    # starting_date = datetime.strptime(starting_date, "%Y-%m-%d").strftime("%d-%m-%Y")
+    # ending_date = intern_data['ending']
+    # ending_date = datetime.strptime(ending_date, "%Y-%m-%d").strftime("%d-%m-%Y")
+    # attendance = int(intern_data['attendance'])
+    # total_attendance_percent = (attendance/15)*100
+    # total_attendance_percent =f"{total_attendance_percent:.2f}"
+    # mark = int(intern_data['testMark'])
+    # total_mark = (mark/50)*100
+    # total_mark =f"{total_mark:.2f}"
     project = intern_data['project']
     course = intern_data['course']
 
@@ -125,38 +127,36 @@ def Intern_Offer_Letter(intern_data):
         As a <b>Andriod Development Intern</b>, the individual worked on and successfully completed the <b>{project}</b> project, effectively showcasing their 
         technical skills and completed projects. Key skills acquired include front-end development 
         with <b>HTML, CSS, JavaScript,</b> and <b>React Native</b>, along with hands-on experience in version control 
-        using <b>Git</b> and <b>GitHub</b>. The intern demonstrated excellent commitment, achieving <b>{total_attendance_percent}%</b> 
-        attendance and a final test score of <b>{total_mark}%</b>.
+        using <b>Git</b> and <b>GitHub</b>. Demonstrating strong commitment and continues learning 
+        throughout the program.
         """
     elif course == 'Full Stack':
         paragraph_text2 = f"""
         As a <b>Web Development Intern</b>, the individual worked on and successfully completed the <b>{project}</b> project, effectively showcasing 
         their technical skills and completed projects. Key skills acquired include front-end development using <b>HTML, CSS,</b> and 
-        <b>JavaScript</b>, along with hands-on experience in version control with <b>Git</b> and <b>GitHub</b>. The intern demonstrated excellent commitment,
-          achieving <b>{total_attendance_percent}%</b> attendance and a final test score of <b>{total_mark}%</b>.
+        <b>JavaScript</b>, along with hands-on experience in version control with <b>Git</b> and <b>GitHub</b>. Demonstrating strong commitment and continues learning 
+        throughout the program.
         """
     elif course =='Digital Marketing':
         paragraph_text2 = f"""
         As a <b>Digital Marketing Intern</b>, the individual worked on and successfully completed the <b>{project}</b> project, effectively showcasing 
         their technical skills and completed projects. Key skills acquired include <b>SEO, social media marketing, 
-        content creation, and digital advertising strategies</b>. The intern demonstrated excellent commitment, achieving 
-        <b>{total_attendance_percent}%</b> attendance and a final test score of <b>{total_mark}%</b>.
+        content creation, and digital advertising strategies</b>. Demonstrating strong commitment and continues learning 
+        throughout the program.
         """
     elif course == 'Data Science':
         paragraph_text2 = f"""
         As a <b>Data Science Intern</b>, the individual worked on and successfully completed the <b>{project}</b> project, gaining proficiency in 
         <b>Python</b> and hands-on experience with libraries like <b>NumPy, Pandas, Requests, and BeautifulSoup</b>. 
-        They also used <b>Git</b> and <b>GitHub</b> for version control, achieving <b>{total_attendance_percent}%</b> 
-        attendance and a final test score of <b>{total_mark}%</b>, demonstrating strong commitment and learning 
+        They also used <b>Git</b> and <b>GitHub</b> for version control, demonstrating strong commitment and continues learning 
         throughout the program.
         """
     elif course == 'Python':
         paragraph_text2 = f"""
         As a <b>Python AI & ML Intern</b>, the individual worked on and successfully completed the <b>{project}</b> project, gaining proficiency 
         in <b>Python</b> and hands-on experience with libraries like <b>NumPy, Pandas, TensorFlow, PyTorch, 
-        scikit-learn, and OpenCV</b>. They also used <b>Git</b> and <b>GitHub</b> for version control, achieving 
-        <b>{total_attendance_percent}%</b> attendance and a final test score of <b>{total_mark}%</b>, demonstrating 
-        strong commitment and learning throughout the program.
+        scikit-learn, and OpenCV</b>. They also used <b>Git</b> and <b>GitHub</b> for version control, demonstrating 
+        strong commitment and continues learning throughout the program.
         """
         
 
@@ -164,7 +164,7 @@ def Intern_Offer_Letter(intern_data):
     paragraph_text1 = f"""
     This is to certify that <b>{name.upper()}</b>, from <b>Madurai Kamaraj University</b> 
     has successfully completed a <b>15-days Mini Internship</b> at <b>Sharpened Mind 
-    Tech & Solutions Private Limited</b>, from <b>{starting_date} to {ending_date}.</b>
+    Tech & Solutions Private Limited</b>, from <b>22-09-2025 to 08-10-2025.</b>
     """
 
     paragraph_text3 = """
@@ -189,7 +189,7 @@ def Intern_Offer_Letter(intern_data):
     ]
 
 
-    # 4️⃣ Add content to a frame (aligned to previous layout)
+    # Add content to a frame (aligned to previous layout)
 
     frame = Frame(50, 160, width - 100, height - 280, showBoundary=0)  # slightly adjusted Y/height
     frame.addFromList(content, c)
@@ -225,15 +225,37 @@ def Intern_Offer_Letter(intern_data):
         c.rect(x, y_position_top, segment_width, line_height, stroke=0, fill=1)
         x += segment_width
 
-    c.drawCentredString(width / 2, 85, "SharpenedMind.com")
-    c.setFont("Times-Bold", 12)
+    # c.drawCentredString(width / 2, 75, "SharpenedMind.com")
+    # c.setFont("Times-Bold", 12)
     c.setFillColor(black)
-    c.drawCentredString(width / 2, 100, "WE BUILD YOUR CAREER")
+    # c.drawCentredString(width / 2, 90, "Building Trust, Creating Success")
     c.setFont("Times-Bold", 12)
     c.drawCentredString(102, 235, "DURGA DEVI M")
     c.setFont("Times-Roman", 12)
     c.drawCentredString(85, 220, "MD & CEO")
     c.drawCentredString(178, 205, "Sharpened Mind Tech & Solutions Private Limited")
+
+
+    styles.add(ParagraphStyle(
+        name='Justify1',
+        alignment=TA_JUSTIFY,
+        fontName='Helvetica',
+        fontSize=8.5,
+        leading=12,
+        spaceAfter=10,
+        textColor='blue'
+    ))
+
+    paragraph_text6 = f"""
+    Registered Office: Sharpened Mind Tech & Solutions Private Limited, 24/38, Middle Street, 
+    Pandian Nagar, Thirunagar, Madurai – 625006, Tamil Nadu,
+    India. Email: admin@sharpenedmindtechnologies.com · 
+    +91 9524584817, +91 9360118099, CIN: U85499TN2023PTC164076
+    """
+    content1 = [Paragraph(paragraph_text6, styles["Justify1"]),]
+
+    frame = Frame(30, -1, width - 60, height - 690, showBoundary=0)  # slightly adjusted Y/height
+    frame.addFromList(content1, c)
 
 
 
